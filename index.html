@@ -13,15 +13,23 @@
     <div class="container">
         <form id="form">
             <h2>Adicione um novo heroi</h2>
-            <input type="text" name="titulo" id="titulo" placeholder="Titulo">
-            <span id="msg-titulo"></span>
-            <input type="url" name="img" id="img" placeholder="Url da imagem">
-            <span id="msg-url"></span>
-            <textarea name="descrição" id="descrição" placeholder="Descrição" cols="30" rows="10"></textarea>
-            <span id="msg-descrição"></span>
+            <div class="box">
+                <input type="text" name="titulo" id="titulo" placeholder="Titulo">
+                <span id="msg-titulo"></span>
+            </div>
 
-            <button type="submit" id="btn">Submit</button>
+            <div class="box">
+                <input type="url" name="url" id="url" placeholder="Url da imagem">
+                <span id="msg-url"></span>
+            </div>
+
+            <div class="box">
+                <textarea name="descrição" id="descrição" placeholder="Descrição" cols="30" rows="10"></textarea>
+                <span id="msg-descrição"></span>
+            </div>
+
         </form>
+            <button type="submit" id="btn">Submit</button>
     </div>
 
     <script src="./js/app.js"></script>

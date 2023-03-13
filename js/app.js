@@ -5,9 +5,31 @@ const descricaoInput = document.querySelector('#descricao');
 const tituloMsg = document.querySelector('.msg-titulo');
 const urlMsg = document.querySelector('.msg-url');
 const descricaoMsg = document.querySelector('.msg-descrição');
+const btn = document.querySelector('#btn');
+const formFields = document.querySelectorAll('.input');
+
+//habilitar e desabilitar o botão
+let formIsValid = false;
+
+  formFields.forEach(field => {
+    field.addEventListener('input', () => {
+      formIsValid = true;
+
+      formFields.forEach(field => {
+        if (field.value === '') {
+          formIsValid = false;
+        }
+      });
+
+      if (formIsValid) {
+        btn.disabled = false;
+      } else {
+        btn.disabled = true;
+      }
+    });
+  });
 
 form.addEventListener('submit', function(event) {
-
   // Verificar se o campo de título está vazio
   if (tituloInput.value.trim() === '') {
     event.preventDefault(); 

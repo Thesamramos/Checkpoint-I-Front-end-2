@@ -30,8 +30,9 @@ let formIsValid = false;
   });
 
 form.addEventListener('submit', function(event) {
+
   // Verificar se o campo de título está vazio
-  if (tituloInput.value.trim() === '') {
+  if (tituloInput.value.trim() === '' || tituloInput == 'null') {
     event.preventDefault(); 
     tituloMsg.innerText = 'Por favor, preencha o título.';
   }else if(tituloInput.value.length < 4){
@@ -50,12 +51,15 @@ form.addEventListener('submit', function(event) {
   }
 
   // Verificar se o campo de descrição está vazio
-  if (descricaoInput.value.trim() === '') {
+  if (descricaoInput.value.trim() === '' || descricaoInput == 'null') {
     event.preventDefault();
     descricaoMsg.innerText = 'Por favor, preencha a descrição.';
   }else if (descricaoInput.value.length < 4){
     event.preventDefault();
     descricaoMsg.innerText = 'A descrição deve conter pelo menos 4 caracteres.';
+  } else if(descricaoInput.value.length > 350){
+    event.preventDefault();
+    descricaoMsg.innerText = 'A descrição deve ter no maximo 350 caracteres.';
   } else {
     descricaoMsg.innerText = '';
   }

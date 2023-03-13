@@ -1,45 +1,50 @@
-const btn = document.getElementById('btn')
+const form = document.querySelector('#form');
+const tituloInput = document.querySelector('#titulo');
+const urlInput = document.querySelector('#url');
+const descricaoInput = document.querySelector('#descricao');
+const tituloMsg = document.querySelector('.msg-titulo');
+const urlMsg = document.querySelector('.msg-url');
+const descricaoMsg = document.querySelector('.msg-descrição');
 
-btn.addEventListener('click', validar)
+form.addEventListener('submit', function(event) {
 
-function validar(){
-    var titulo = document.getElementById('titulo');
-    var url = document.getElementById('url');
-    var descrição = document.getElementById('descrição');
+  // Verificar se o campo de título está vazio
+  if (tituloInput.value.trim() === '') {
+    event.preventDefault(); 
+    tituloMsg.innerText = 'Por favor, preencha o título.';
+  }else if(tituloInput.value.length < 4){
+    event.preventDefault(); 
+    tituloMsg.innerText = 'O titulo deve conter pelo menos 4 caracteres.';
+  } else {
+    tituloMsg.innerText = '';
+  }
 
-    // validar nome
-    let msgTitulo = document.getElementById('msg-titulo');
-    if (titulo.value == ''){
-        msgTitulo.textContent = 'Insira o titulo';
-        msgTitulo.style.display = 'block';
-    }else if(titulo.value.length < 4){
-        msgTitulo.textContent = 'O titulo deve conter no minimo 4 caracteres';
-        msgTitulo.style.display = 'block'
-    }else{
-        msgTitulo.style.display = 'none'
-    }
+  // Verificar se o campo de url está vazio ou não é uma URL válida
+  if (urlInput.value.trim() === '' || !isValidUrl(urlInput.value)) {
+    event.preventDefault();
+    urlMsg.innerText = 'Por favor, forneça uma URL válida.';
+  } else {
+    urlMsg.innerText = '';
+  }
 
-    // validar url
-    let msgUrl = document.getElementById('msg-url');
-    if (url.value == ''){
-        msgUrl.textContent = 'Insira a url da imagem';
-        msgUrl.style.display = 'block';
-    } else {
-        msgUrl.style.display = 'none';
-    }
+  // Verificar se o campo de descrição está vazio
+  if (descricaoInput.value.trim() === '') {
+    event.preventDefault();
+    descricaoMsg.innerText = 'Por favor, preencha a descrição.';
+  }else if (descricaoInput.value.length < 4){
+    event.preventDefault();
+    descricaoMsg.innerText = 'A descrição deve conter pelo menos 4 caracteres.';
+  } else {
+    descricaoMsg.innerText = '';
+  }
+});
 
-    // validar descrição
-
-    let msgDescrição = document.getElementById('msg-descrição');
-    if (descrição.value == ''){
-        msgDescrição.textContent = 'Insira a descrição';
-        msgDescrição.style.display = 'block';
-    } else if(descrição.value.length < 4){
-        msgDescrição.textContent = 'A descrição deve conter no minimo 4 caracteres';
-        msgDescrição.style.display = 'block';
-    }else {
-        msgDescrição.style.display = 'none';
-    }
-
-
+// Função auxiliar para verificar se uma string é uma URL válida
+function isValidUrl(string) {
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;
+  }
 }

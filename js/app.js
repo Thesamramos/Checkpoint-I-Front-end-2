@@ -63,7 +63,6 @@ form.addEventListener('submit', function(event) {
   } else {
     descricaoMsg.innerText = '';
   } 
-});
 
 btn.addEventListener('click', (event) => {
   event.preventDefault(); // previne comportamento padrão do formulário
@@ -100,13 +99,9 @@ btn.addEventListener('click', (event) => {
   newCard.appendChild(arrow);
 
   // adiciona as informações do formulário ao novo card
-  const titulo = tituloInput.value;
-  const url = urlInput.value;
-  const descricao = descricaoInput.value;
-
-  cardImage.setAttribute('src', url);
-  cardName.innerHTML = titulo;
-  cardText.innerHTML = descricao;
+  cardImage.setAttribute('src', urlInput.value);
+  cardName.innerHTML = tituloInput.value;
+  cardText.innerHTML = descricaoInput.value;
 
   // adiciona o novo card ao container
   container.appendChild(newCard);
@@ -114,7 +109,7 @@ btn.addEventListener('click', (event) => {
   // limpa o formulário
   form.reset();
 });
-
+});
 // Função auxiliar para verificar se uma string é uma URL válida
 function isValidUrl(string) {
   try {

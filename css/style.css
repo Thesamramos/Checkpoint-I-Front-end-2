@@ -81,10 +81,10 @@ button:disabled{
     transition: 0.5s;
 }
 #container {
-    
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    margin: 0px 200px;
 }
 
 /* Card */
@@ -197,5 +197,9 @@ height: 512px;
 
     .msg-descrição{
         text-align: center;
+    }
+
+    #container{
+        margin: 0 0;
     }
 }

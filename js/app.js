@@ -63,11 +63,13 @@ form.addEventListener('submit', function(event) {
   } else {
     descricaoMsg.innerText = '';
   } 
+});
 
 btn.addEventListener('click', (event) => {
-  event.preventDefault(); // previne comportamento padrão do formulário
-
-  // cria a div do novo card
+  
+  if(descricaoInput.value.trim() !== '' && descricaoInput !== null && tituloInput.value.trim() !== '' && tituloInput !== null && descricaoInput.value.length >= 4 && tituloInput.value.length >= 4 && urlInput.value.trim() !== ''){
+  event.preventDefault();
+    // cria a div do novo card
   const newCard = document.createElement('div');
   newCard.classList.add('card');
 
@@ -108,7 +110,7 @@ btn.addEventListener('click', (event) => {
 
   // limpa o formulário
   form.reset();
-});
+}
 });
 // Função auxiliar para verificar se uma string é uma URL válida
 function isValidUrl(string) {

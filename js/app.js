@@ -67,7 +67,7 @@ form.addEventListener('submit', function(event) {
 
 btn.addEventListener('click', (event) => {
   
-  if(descricaoInput.value.trim() !== '' && descricaoInput !== null && tituloInput.value.trim() !== '' && tituloInput !== null && descricaoInput.value.length >= 4 && tituloInput.value.length >= 4 && urlInput.value.trim() !== ''){
+  if(descricaoInput.value.trim() !== '' && descricaoInput !== null && descricaoInput.value.length <= 350&& tituloInput.value.trim() !== '' && tituloInput !== null && descricaoInput.value.length >= 4 && tituloInput.value.length >= 4 && urlInput.value.trim() !== ''){
   event.preventDefault();
     // cria a div do novo card
   const newCard = document.createElement('div');

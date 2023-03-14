@@ -63,7 +63,8 @@ body {
 }
 
 button {
-    background-color: rgb(61, 60, 60);
+    background-color: green;
+    transition: 0.5s;
     color: #fff;
     font-weight: bold;
     width: 200px;
@@ -75,6 +76,10 @@ button {
     font-size: 1rem;
 }
 
+button:disabled{
+    background-color: rgb(61, 60, 60);
+    transition: 0.5s;
+}
 .container {
     
     display: flex;

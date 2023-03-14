@@ -32,7 +32,7 @@ let formIsValid = false;
 form.addEventListener('submit', function(event) {
 
   // Verificar se o campo de título está vazio
-  if (tituloInput.value.trim() === '' || tituloInput == 'null') {
+  if (tituloInput.value.trim() === '' || tituloInput == null) {
     event.preventDefault(); 
     tituloMsg.innerText = 'Por favor, preencha o título.';
   }else if(tituloInput.value.length < 4){
@@ -51,7 +51,7 @@ form.addEventListener('submit', function(event) {
   }
 
   // Verificar se o campo de descrição está vazio
-  if (descricaoInput.value.trim() === '' || descricaoInput == 'null') {
+  if (descricaoInput.value.trim() === '' || descricaoInput == null) {
     event.preventDefault();
     descricaoMsg.innerText = 'Por favor, preencha a descrição.';
   }else if (descricaoInput.value.length < 4){
@@ -62,7 +62,57 @@ form.addEventListener('submit', function(event) {
     descricaoMsg.innerText = 'A descrição deve ter no maximo 350 caracteres.';
   } else {
     descricaoMsg.innerText = '';
-  }
+  } 
+});
+
+btn.addEventListener('click', (event) => {
+  event.preventDefault(); // previne comportamento padrão do formulário
+
+  // cria a div do novo card
+  const newCard = document.createElement('div');
+  newCard.classList.add('card');
+
+  // adiciona os elementos do cabeçalho do card
+  const cardHeader = document.createElement('div');
+  cardHeader.classList.add('card-header');
+  const cardImage = document.createElement('img');
+  cardImage.classList.add('card-image');
+  cardHeader.appendChild(cardImage);
+  newCard.appendChild(cardHeader);
+
+  // adiciona os elementos do corpo do card
+  const cardBody = document.createElement('div');
+  cardBody.classList.add('card-body');
+  const cardName = document.createElement('h2');
+  cardName.classList.add('card-name');
+  const cardText = document.createElement('p');
+  cardText.classList.add('card-text');
+  cardBody.appendChild(cardName);
+  cardBody.appendChild(cardText);
+  newCard.appendChild(cardBody);
+
+  // adiciona a seta para cima
+  const arrow = document.createElement('div');
+  arrow.classList.add('arrow');
+  const arrowSpan = document.createElement('span');
+  arrowSpan.innerHTML = '&#8673;';
+  arrow.appendChild(arrowSpan);
+  newCard.appendChild(arrow);
+
+  // adiciona as informações do formulário ao novo card
+  const titulo = tituloInput.value;
+  const url = urlInput.value;
+  const descricao = descricaoInput.value;
+
+  cardImage.setAttribute('src', url);
+  cardName.innerHTML = titulo;
+  cardText.innerHTML = descricao;
+
+  // adiciona o novo card ao container
+  container.appendChild(newCard);
+
+  // limpa o formulário
+  form.reset();
 });
 
 // Função auxiliar para verificar se uma string é uma URL válida
@@ -73,4 +123,4 @@ function isValidUrl(string) {
   } catch (_) {
     return false;
   }
-}
+}  
